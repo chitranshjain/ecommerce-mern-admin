@@ -1,0 +1,92 @@
+.add-product-content {
+    padding: 20px !important;
+    text-align: left;
+}
+
+.add-product-content h4 {
+    font-weight: 600;
+    font-size: 32px;
+    color: rgba(0, 0, 0, 0.7);
+    margin: 12px 0 12px 0 !important;
+}
+
+.add-product-content p {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.add-product-form-card {
+    margin: 16px 16px 16px 0 !important;
+    border: none !important;
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px !important;
+}
+
+.add-product-input-div {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 8px !important;
+    border-radius: 12px;
+    margin: 12px 12px 12px 0 !important;
+}
+
+.add-product-image-div {
+    border: 1px dashed rgba(0, 0, 0, 0.35) !important;
+    padding: 0px !important;
+    border-radius: 12px;
+    margin: 12px 12px 12px 0 !important;
+    transition: 0.2s ease-in-out;
+}
+
+.add-product-image-div:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.add-product-input-div p {
+    font-size: 14px;
+}
+
+.add-product-input-div input,
+.add-product-input-div textarea {
+    outline: none !important;
+    border: none !important;
+    width: 100% !important;
+    resize: none !important;
+}
+
+.product-image-div {
+    height: 236px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-product-btn {
+    padding: 12px !important;
+    border-radius: 12px;
+    margin-right: 12px !important;
+    background-color: white;
+    color: #2D46B9;
+    border: 1px solid #2d46b9 !important;
+    transition: 0.2s ease-in-out;
+}
+
+.add-product-btn:hover {
+    background-color: #2D46B9;
+    color: #fff;
+}
+
+.product-image-div img {
+    height: 236px !important;
+    width: 100% !important;
+    object-fit: contain;
+}
+
+.add-product-dropdown {
+    border: none !important;
+    width: 100% !important;
+    color: rgba(0, 0, 0, 0.6);
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-left: -4px !important;
+}

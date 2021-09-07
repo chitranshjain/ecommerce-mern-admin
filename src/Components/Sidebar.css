@@ -1,7 +1,7 @@
 .sidebar-parent-div {
-    height: 98vh;
-    width: 17%;
+    height: 100vh;
     padding: 8px !important;
+    padding-bottom: 16px;
     /* padding: 8px; */
     /* #2D46B9 */
 }
@@ -47,7 +47,7 @@
     justify-content: flex-start;
     align-items: center;
     color: #2d46b9;
-    width: 85%;
+    width: 95%;
     padding: 12px !important;
     border-radius: 12px;
     transition: 0.2s ease-in-out;
@@ -84,4 +84,9 @@
 .sidebar-footer-div p {
     font-size: 14px;
     color: rgba(0, 0, 0, 0.65);
+}
+
+.sidebar-link {
+    text-decoration: none;
+    width: 100%;
 }
