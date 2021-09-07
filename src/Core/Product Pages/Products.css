@@ -1,0 +1,70 @@
+.products-content {
+    padding: 20px !important;
+    text-align: left;
+}
+
+.products-content h4 {
+    font-weight: 600;
+    font-size: 32px;
+    color: rgba(0, 0, 0, 0.7);
+    margin: 12px 0 12px 0 !important;
+}
+
+.products-content p {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.products-content hr {
+    margin: 12px 0 !important;
+    color: #2d46b9 !important;
+}
+
+.product-card {
+    padding: 16px !important;
+    border-radius: 12px;
+    margin: 12px 12px 12px 0 !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.product-card img {
+    height: 160px;
+    width: 160px;
+    margin: auto !important;
+    object-fit: contain;
+    margin-bottom: 12px !important;
+}
+
+.product-card h5 {
+    color: #2d46b9;
+    font-size: 16px;
+    text-align: left !important;
+}
+
+.product-card p {
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 14px;
+}
+
+.product-card-icon {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.65);
+    transition: 0.2s ease-in-out;
+}
+
+.product-card-icon:hover {
+    cursor: pointer;
+    color: #2d46b9;
+}
+
+.edit-icon {
+    bottom: 44px;
+    right: 16px;
+}
+
+.delete-icon {
+    bottom: 16px;
+    right: 16px;
+}

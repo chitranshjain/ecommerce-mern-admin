@@ -19,7 +19,6 @@ function Sidebar() {
 
   const isActive = (history, path) => {
     if (history.location.pathname === path) {
-      console.log("Yes, active");
       return true;
     } else {
       return false;
@@ -46,6 +45,8 @@ function Sidebar() {
             <div
               className={`sidebar-item ${
                 isActive(history, "/categories") && "active"
+              } ${isActive(history, "/categories/add") && "active"} ${
+                isActive(history, "/categories/edit") && "active"
               }`}
             >
               <RiFileList3Line className="sidebar-icon" />
