@@ -4,16 +4,35 @@ import Sidebar from "../../Components/Sidebar";
 import axios from "axios";
 
 import "./AddCategory.css";
+import { useHistory } from "react-router";
 
-function AddCategory() {
-  const [newCategory, setNewCategory] = useState({
+function EditCategory(props) {
+  const [categoryData, setCategoryData] = useState({
     name: "",
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setNewCategory((prev) => {
+    setCategoryData((prev) => {
       return { ...prev, [name]: value };
+    });
+  };
+
+  useEffect(() => {
+    getCategoryData();
+  }, []);
+
+  const getCategoryData = () => {
+    const categoryId = props.match.params.categoryId;
+    axios({
+      method: "get",
+      url: `https://ecommerceappcj.herokuapp.com/api/categories/${categoryId}`,
+    }).then((response) => {
+      console.log(response.data.category);
+      setCategoryData(response.data.category);
+      setImagePreview(
+        `https://ecommerceappcj.herokuapp.com/${response.data.category.image}`
+      );
     });
   };
 
@@ -21,6 +40,7 @@ function AddCategory() {
   const [image, setImage] = useState(null);
   const imageButtonRef = useRef();
   const types = ["image/png", "image/jpeg", "image/jpg"];
+  const history = useHistory();
 
   function handleImageChange(event) {
     let selectedFile = event.target.files[0];
@@ -32,21 +52,35 @@ function AddCategory() {
     }
   }
 
-  const addCategory = async (event) => {
+  const editCategory = async (event) => {
     event.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append("name", newCategory.name);
-      formData.append("image", image);
       axios({
-        method: "post",
-        url: "https://ecommerceappcj.herokuapp.com/api/categories/",
-        data: formData,
+        method: "patch",
+        url: `https://ecommerceappcj.herokuapp.com/api/categories/${props.match.params.categoryId}`,
+        data: { name: categoryData.name },
       }).then((response) => {
-        setImagePreview();
-        setNewCategory({
-          name: "",
-        });
+        if (image) {
+          const formData = new FormData();
+          formData.append("image", image);
+          axios({
+            method: "patch",
+            url: `https://ecommerceappcj.herokuapp.com/api/categories/image/${props.match.params.categoryId}`,
+            data: formData,
+          }).then((resp) => {
+            setImagePreview();
+            setCategoryData({
+              name: "",
+            });
+            history.push("/categories");
+          });
+        } else {
+          setImagePreview();
+          setCategoryData({
+            name: "",
+          });
+          history.push("/categories");
+        }
       });
     } catch (err) {
       console.log("Error : " + err.message);
@@ -59,10 +93,10 @@ function AddCategory() {
           <Sidebar />
         </Col>
         <Col className="add-category-content" lg={10}>
-          <h4>Add Category</h4>
+          <h4>Edit Category</h4>
           <p>
-            Please fill the category details in the form below to add a new
-            category.
+            Please fill the category details in the form below to edit category
+            information.
           </p>
           <Card className="add-product-form-card">
             <div className="add-product-input-div">
@@ -70,7 +104,7 @@ function AddCategory() {
               <input
                 type="text"
                 name="name"
-                value={newCategory.name}
+                value={categoryData.name}
                 onChange={handleChange}
               ></input>
             </div>
@@ -96,8 +130,8 @@ function AddCategory() {
                 )}
               </div>
             </div>
-            <button onClick={addCategory} className="add-category-btn">
-              Add Category
+            <button onClick={editCategory} className="add-category-btn">
+              Update Category
             </button>
           </Card>
         </Col>
@@ -106,4 +140,4 @@ function AddCategory() {
   );
 }
 
-export default AddCategory;
+export default EditCategory;

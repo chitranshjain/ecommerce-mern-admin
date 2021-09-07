@@ -8,6 +8,7 @@ import Products from "./Core/Product Pages/Products";
 import Complaints from "./Core/Complaints/Complaints";
 import AddProduct from "./Core/Product Pages/AddProduct";
 import AddCategory from "./Core/Category Pages/AddCategory";
+import EditCategory from "./Core/Category Pages/EditCategory";
 
 function App() {
   return (
@@ -19,6 +20,11 @@ function App() {
           <Route path="/orders" exact component={Orders} />
           <Route path="/categories" exact component={Categories} />
           <Route path="/categories/add" exact component={AddCategory} />
+          <Route
+            path="/categories/edit/:categoryId"
+            exact
+            component={EditCategory}
+          />
           <Route path="/products" exact component={Products} />
           <Route path="/complaints" exact component={Complaints} />
           <Route path="/products/add" exact component={AddProduct} />

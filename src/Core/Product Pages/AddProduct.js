@@ -32,7 +32,6 @@ function AddProduct() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(value);
     setNewProduct((prev) => {
       return { ...prev, [name]: value };
     });

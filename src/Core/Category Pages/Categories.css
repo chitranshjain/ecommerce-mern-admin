@@ -1,0 +1,73 @@
+.categories-content {
+    padding: 20px !important;
+    text-align: left;
+}
+
+.categories-content h4 {
+    font-weight: 600;
+    font-size: 32px;
+    color: rgba(0, 0, 0, 0.7);
+    margin: 12px 0 12px 0 !important;
+}
+
+.categories-content p {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.categories-content hr {
+    margin: 12px 0 !important;
+    color: #2D46B9;
+}
+
+.category-card {
+    padding: 16px !important;
+    margin: 12px 12px 12px 0 !important;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-card img {
+    height: 140px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 12px !important;
+}
+
+.category-card h5 {
+    font-size: 18px;
+    color: #2D46B9;
+}
+
+.add-cat-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-cat-btn {
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.add-cat-col div {
+    padding: 8px !important;
+    border-radius: 50%;
+    transition: 0.2s ease-in-out;
+}
+
+.add-cat-col div:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.add-cat-btn:hover {
+    color: #2D46B9 !important;
+}
+
+.add-cat-overlay {
+    padding: 6px !important;
+    font-size: 14px;
+    margin-bottom: 6px !important;
+}
