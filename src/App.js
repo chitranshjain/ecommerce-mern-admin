@@ -9,6 +9,9 @@ import Complaints from "./Core/Complaints/Complaints";
 import AddProduct from "./Core/Product Pages/AddProduct";
 import AddCategory from "./Core/Category Pages/AddCategory";
 import EditCategory from "./Core/Category Pages/EditCategory";
+import EditProduct from "./Core/Product Pages/EditProduct";
+import User from "./Core/User Pages/User";
+import Order from "./Core/Orders Pages/Order";
 
 function App() {
   return (
@@ -17,7 +20,9 @@ function App() {
         <Switch>
           <Route path="/" exact component={Dashboard} />
           <Route path="/users" exact component={Users} />
+          <Route path="/users/:userId" exact component={User} />
           <Route path="/orders" exact component={Orders} />
+          <Route path="/orders/:orderId" exact component={Order} />
           <Route path="/categories" exact component={Categories} />
           <Route path="/categories/add" exact component={AddCategory} />
           <Route
@@ -28,6 +33,11 @@ function App() {
           <Route path="/products" exact component={Products} />
           <Route path="/complaints" exact component={Complaints} />
           <Route path="/products/add" exact component={AddProduct} />
+          <Route
+            path="/products/edit/:productId"
+            exact
+            component={EditProduct}
+          />
         </Switch>
       </Router>
     </div>
