@@ -110,7 +110,9 @@ function Users() {
                       <RiHome2Line className="user-card-icon" /> {user.address},{" "}
                       {user.city} - {user.pin}
                     </p>
-                    <RiExternalLinkLine className="user-link" />
+                    <Link to={`/users/${user.id}`}>
+                      <RiExternalLinkLine className="user-link" />
+                    </Link>
                   </Card>
                 </Col>
               );

@@ -56,7 +56,6 @@ function Categories() {
           <hr />
           <Row>
             {categories.map((category) => {
-              console.log(category);
               return (
                 <Col lg={3}>
                   <Card className="category-card">

@@ -83,7 +83,6 @@ function Orders() {
             <div style={{ height: 600, width: "100%" }}>
               <DataGrid
                 rows={orders.map((order) => {
-                  console.log(order);
                   return {
                     id: order.id,
                     userId: order.userId.id,
