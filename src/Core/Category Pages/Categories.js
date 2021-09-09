@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import Sidebar from "../../Components/Sidebar";
-import { RiAddFill, RiEditLine } from "react-icons/ri";
+import { RiAddFill, RiEditLine, RiEyeLine } from "react-icons/ri";
 
 import "./Categories.css";
 import { Link } from "react-router-dom";
@@ -66,6 +66,9 @@ function Categories() {
                     <h5>{category.name}</h5>
                     <Link to={`/categories/edit/${category.id}`}>
                       <RiEditLine className="edit-cat-btn" />
+                    </Link>
+                    <Link to={`/categories/products/${category.id}`}>
+                      <RiEyeLine className="view-prod-btn" />
                     </Link>
                   </Card>
                 </Col>

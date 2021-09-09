@@ -77,3 +77,7 @@
 .dashboard-action-card:hover .action-icon {
     transform: scale(1.2);
 }
+
+.dashboard-action-card a {
+    text-decoration: none;
+}

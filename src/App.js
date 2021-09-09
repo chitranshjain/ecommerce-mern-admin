@@ -12,6 +12,7 @@ import EditCategory from "./Core/Category Pages/EditCategory";
 import EditProduct from "./Core/Product Pages/EditProduct";
 import User from "./Core/User Pages/User";
 import Order from "./Core/Orders Pages/Order";
+import CategoryProduct from "./Core/Category Pages/CategoryProduct";
 
 function App() {
   return (
@@ -25,6 +26,11 @@ function App() {
           <Route path="/orders/:orderId" exact component={Order} />
           <Route path="/categories" exact component={Categories} />
           <Route path="/categories/add" exact component={AddCategory} />
+          <Route
+            path="/categories/products/:categoryId"
+            exact
+            component={CategoryProduct}
+          />
           <Route
             path="/categories/edit/:categoryId"
             exact

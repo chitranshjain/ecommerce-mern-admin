@@ -1,0 +1,20 @@
+.complaints-content {
+    padding: 20px !important;
+    text-align: left;
+}
+
+.complaints-content h4 {
+    font-weight: 600;
+    font-size: 32px;
+    color: rgba(0, 0, 0, 0.7);
+    margin: 12px 0 12px 0 !important;
+}
+
+.complaints-content p {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.complaints-content hr {
+    margin: 12px 0 !important;
+    color: #2d46b9 !important;
+}
