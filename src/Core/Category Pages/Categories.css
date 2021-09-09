@@ -72,7 +72,8 @@
     margin-bottom: 6px !important;
 }
 
-.edit-cat-btn {
+.edit-cat-btn,
+.view-prod-btn {
     position: absolute;
     font-size: 20px;
     top: 20px;
@@ -81,7 +82,12 @@
     transition: 0.2s ease-in-out;
 }
 
-.edit-cat-btn:hover {
+.view-prod-btn {
+    top: 48px;
+}
+
+.edit-cat-btn:hover,
+.view-prod-btn:hover {
     cursor: pointer;
     color: #2d46b9;
 }

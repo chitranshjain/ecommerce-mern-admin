@@ -122,11 +122,13 @@ function EditProduct(props) {
           <Sidebar />
         </Col>
         <Col className="add-product-content" lg={10}>
-          <h4>Add Product</h4>
-          <p>
-            Please fill the product details in the form below to add a new
-            product.
-          </p>
+          <h4>Update Product</h4>
+          {productData && (
+            <p>
+              Please fill the product details in the form below to update{" "}
+              <strong>{productData.name}</strong>.
+            </p>
+          )}
           <Card className="add-product-form-card">
             {productData && (
               <div>

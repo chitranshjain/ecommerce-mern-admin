@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import Sidebar from "../Components/Sidebar";
 import {
@@ -12,8 +12,56 @@ import { BsViewList } from "react-icons/bs";
 import { FaLaptopMedical } from "react-icons/fa";
 
 import "./Dashboard.css";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Dashboard() {
+  const [orders, setOrders] = useState();
+  const [totalRevenue, setTotalRevenue] = useState();
+  const [products, setProducts] = useState();
+  const [users, setUsers] = useState();
+
+  useEffect(() => {
+    getOrders();
+    getUsers();
+    getProducts();
+  }, []);
+
+  const getProducts = () => {
+    setProducts();
+    axios({
+      method: "get",
+      url: "https://ecommerceappcj.herokuapp.com/api/products/",
+    }).then((response) => {
+      setProducts(response.data.products);
+    });
+  };
+
+  const getUsers = () => {
+    setUsers();
+    axios({
+      method: "get",
+      url: "https://ecommerceappcj.herokuapp.com/api/users/",
+    }).then((response) => {
+      setUsers(response.data.allUsers);
+    });
+  };
+
+  const getOrders = () => {
+    setOrders();
+    axios({
+      method: "get",
+      url: "https://ecommerceappcj.herokuapp.com/api/orders/",
+    }).then((response) => {
+      setOrders(response.data.allOrders);
+      let rev = 0;
+      response.data.allOrders.forEach((order) => {
+        rev += order.orderAmount;
+      });
+      setTotalRevenue(rev);
+    });
+  };
+
   return (
     <div className="dashboard-parent-div">
       <Row>
@@ -25,32 +73,50 @@ function Dashboard() {
           <p>Here's an overview of your online business.</p>
           <Row>
             <Col>
-              <Card className="dashboard-card">
-                <RiShoppingCart2Line className="card-icon" />
-                <h4>54 Orders</h4>
-                <p>54 orders placed</p>
-              </Card>
+              {orders && (
+                <Card className="dashboard-card">
+                  <RiShoppingCart2Line className="card-icon" />
+                  <h4>{orders.length} Orders</h4>
+                  <p>{orders.length} orders placed</p>
+                </Card>
+              )}
             </Col>
             <Col>
-              <Card className="dashboard-card">
-                <BiRupee className="card-icon" />
-                <h4>256845 Total Revenue</h4>
-                <p>256845 revenue generated</p>
-              </Card>
+              {totalRevenue && (
+                <Card className="dashboard-card">
+                  <BiRupee className="card-icon" />
+                  <h4>
+                    {totalRevenue
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                    Total Revenue
+                  </h4>
+                  <p>
+                    {totalRevenue
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                    revenue generated
+                  </p>
+                </Card>
+              )}
             </Col>
             <Col>
-              <Card className="dashboard-card">
-                <IoIosLaptop className="card-icon" />
-                <h4>89 Products</h4>
-                <p>89 products added</p>
-              </Card>
+              {products && (
+                <Card className="dashboard-card">
+                  <IoIosLaptop className="card-icon" />
+                  <h4>{products.length} Products</h4>
+                  <p>{products.length} products added</p>
+                </Card>
+              )}
             </Col>
             <Col>
-              <Card className="dashboard-card">
-                <RiUser3Line className="card-icon" />
-                <h4>74 Customers</h4>
-                <p>74 registered customers</p>
-              </Card>
+              {users && (
+                <Card className="dashboard-card">
+                  <RiUser3Line className="card-icon" />
+                  <h4>{users.length} Customers</h4>
+                  <p>{users.length} registered customers</p>
+                </Card>
+              )}
             </Col>
           </Row>
           <h4>Quick Links</h4>
@@ -59,46 +125,63 @@ function Dashboard() {
               <Card className="dashboard-action-card">
                 <BsViewList className="action-icon" />
                 <h4>Product Categories</h4>
-                <p>Click here to add, remove or edit categories</p>
+                <p>
+                  <Link to="/categories">Click here</Link> to add, remove or
+                  edit categories
+                </p>
               </Card>
             </Col>
             <Col>
               <Card className="dashboard-action-card">
                 <IoIosLaptop className="action-icon" />
                 <h4>All products</h4>
-                <p>Click here to view, remove or edit products</p>
+                <p>
+                  <Link to="/products">Click here</Link> to view, remove or edit
+                  products
+                </p>
               </Card>
             </Col>
             <Col>
               <Card className="dashboard-action-card">
                 <FaLaptopMedical className="action-icon" />
                 <h4>Add Products</h4>
-                <p>Click here to add new products</p>
+                <p>
+                  <Link to="/products/add">Click here</Link> to add new products
+                </p>
               </Card>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col lg={4}>
               <Card className="dashboard-action-card">
                 <RiShoppingCart2Line className="action-icon" />
                 <h4>All Orders</h4>
-                <p>Click here to view, remove or edit orders</p>
+                <p>
+                  <Link to="/orders">Click here</Link> to view, remove or edit
+                  orders
+                </p>
               </Card>
             </Col>
-            <Col>
+            <Col lg={4}>
               <Card className="dashboard-action-card">
                 <RiUser3Line className="action-icon" />
                 <h4>All Customers</h4>
-                <p>Click here to view registered customer details</p>
+                <p>
+                  <Link to="/users">Click here</Link> to view registered
+                  customer details
+                </p>
               </Card>
             </Col>
-            <Col>
+            {/* <Col>
               <Card className="dashboard-action-card">
                 <RiFeedbackLine className="action-icon" />
                 <h4>Complaints & Feedbacks</h4>
-                <p>Click here view complaints and feedbacks</p>
+                <p>
+                  <Link to="/complaints">Click here</Link> view complaints and
+                  feedbacks
+                </p>
               </Card>
-            </Col>
+            </Col> */}
           </Row>
         </Col>
       </Row>

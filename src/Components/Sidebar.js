@@ -5,7 +5,6 @@ import {
   RiUser3Line,
   RiAddFill,
   RiFileList3Line,
-  RiFeedbackLine,
 } from "react-icons/ri";
 
 import { IoIosLaptop } from "react-icons/io";
@@ -45,12 +44,20 @@ function Sidebar() {
             <div
               className={`sidebar-item ${
                 isActive(history, "/categories") && "active"
-              } ${isActive(history, "/categories/add") && "active"} ${
-                isActive(history, "/categories/edit") && "active"
               }`}
             >
               <RiFileList3Line className="sidebar-icon" />
               <p>Product Categories</p>
+            </div>
+          </Link>
+          <Link to="/categories/add" className="sidebar-link">
+            <div
+              className={`sidebar-item ${
+                isActive(history, "/categories/add") && "active"
+              }`}
+            >
+              <RiAddFill className="sidebar-icon" />
+              <p>Add Category</p>
             </div>
           </Link>
           <Link to="/products" className="sidebar-link">
@@ -93,7 +100,7 @@ function Sidebar() {
               <p>Users</p>
             </div>
           </Link>
-          <Link to="/complaints" className="sidebar-link">
+          {/* <Link to="/complaints" className="sidebar-link">
             <div
               className={`sidebar-item ${
                 isActive(history, "/complaints") && "active"
@@ -102,7 +109,7 @@ function Sidebar() {
               <RiFeedbackLine className="sidebar-icon" />
               <p>Complaints & Feedbacks</p>
             </div>
-          </Link>
+          </Link> */}
         </div>
         <div className="sidebar-footer-div">
           <p>© Copyright MyShop Inc.</p>
