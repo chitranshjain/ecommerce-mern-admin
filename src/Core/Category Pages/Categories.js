@@ -54,7 +54,7 @@ function Categories() {
             </Col>
           </Row>
           <hr />
-          <Row>
+          <Row className="categories-row">
             {categories.map((category) => {
               return (
                 <Col lg={3}>
